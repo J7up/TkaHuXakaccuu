@@ -5,16 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TkaHuXakaccuu"
         mc:Ignorable="d"
-        Title="Ткани Хакасии" Height="450" Width="800">
+        Title="Ткани Хакасии" Height="600" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
-        <Image Source="Resources/scissors.png" HorizontalAlignment="Left"></Image>
-        <TextBlock Text="Header" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        <Grid Grid.Row ="2" Background="#FF3C83D2"></Grid>
-        <Frame Grid.Row="1" x:Name="MainFrame"></Frame>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Background="#bae3e8" Grid.ColumnSpan="2"></Grid>
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+            <Image Source="Resources/scissors.png" HorizontalAlignment="Left"></Image>
+            <TextBlock Text="Ткани Хакасии" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
+        <TextBlock Text="Ткани" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"></TextBlock>
+        <Label Grid.Row ="2" Background="#FF3C83D2" Grid.ColumnSpan="2">© 2022 Магазин "Ткани Хакасии". Все права защищены. Все торговые марки являются собственностью соответствующих владельцев.</Label>
+        <Frame Grid.Row="1" Grid.Column="1" x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
+        <StackPanel Orientation="Vertical" Grid.Row="1">
+            <Button x:Name="BtnCloth" Click="BtnCloth_Click">Ткани</Button>
+            <Button x:Name="BtnFurniture" Click="BtnFurniture_Click">Фурнитура</Button>
+            <Button x:Name="BtnServices" Click="BtnServices_Click">Услуги</Button>
+        </StackPanel>
+        
     </Grid>
 </Window>

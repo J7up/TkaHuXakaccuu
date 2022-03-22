@@ -13,10 +13,10 @@ namespace TkaHuXakaccuu
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ТканиХакасииEntities : DbContext
+    public partial class ТканиХакасииEntities1 : DbContext
     {
-        public ТканиХакасииEntities()
-            : base("name=ТканиХакасииEntities")
+        public ТканиХакасииEntities1()
+            : base("name=ТканиХакасииEntities1")
         {
         }
     
@@ -25,11 +25,11 @@ namespace TkaHuXakaccuu
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ВидФурнитуры> ВидФурнитуры { get; set; }
         public virtual DbSet<ВидыТканей> ВидыТканей { get; set; }
+        public virtual DbSet<ВидыФурнитур> ВидыФурнитур { get; set; }
         public virtual DbSet<ЕдИзмерения> ЕдИзмерения { get; set; }
         public virtual DbSet<Клиенты> Клиенты { get; set; }
-        public virtual DbSet<Материал> Материал { get; set; }
+        public virtual DbSet<Материалы> Материалы { get; set; }
         public virtual DbSet<Покупка> Покупка { get; set; }
         public virtual DbSet<Производители> Производители { get; set; }
         public virtual DbSet<Ткани> Ткани { get; set; }

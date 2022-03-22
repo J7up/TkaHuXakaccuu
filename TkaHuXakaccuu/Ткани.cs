@@ -34,7 +34,7 @@ namespace TkaHuXakaccuu
         public byte[] Фото { get; set; }
     
         public virtual ВидыТканей ВидыТканей { get; set; }
-        public virtual Материал Материал1 { get; set; }
+        public virtual Материалы Материалы { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Покупка> Покупка { get; set; }
         public virtual Производители Производители { get; set; }

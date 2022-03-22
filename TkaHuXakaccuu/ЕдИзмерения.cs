@@ -21,7 +21,7 @@ namespace TkaHuXakaccuu
         }
     
         public int ID { get; set; }
-        public string ЕдИзмерения1 { get; set; }
+        public string ЕдИзм { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Фурнитура> Фурнитура { get; set; }

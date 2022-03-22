@@ -5,13 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище ТканиХакасииModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ВидФурнитуры">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ВидФурнитуры" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="ВидыТканей">
           <Key>
             <PropertyRef Name="ID" />
@@ -19,12 +12,19 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ВидТканей" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="ВидыФурнитур">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ВидФурнитуры" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="ЕдИзмерения">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ЕдИзмерения" Type="nvarchar" MaxLength="50" />
+          <Property Name="ЕдИзм" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Клиенты">
           <Key>
@@ -37,7 +37,7 @@
           <Property Name="Телефон" Type="nvarchar" MaxLength="50" />
           <Property Name="Фото" Type="image" />
         </EntityType>
-        <EntityType Name="Материал">
+        <EntityType Name="Материалы">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -164,10 +164,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ткани_Материал">
-          <End Role="Материал" Type="Self.Материал" Multiplicity="0..1" />
+          <End Role="Материалы" Type="Self.Материалы" Multiplicity="0..1" />
           <End Role="Ткани" Type="Self.Ткани" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Материал">
+            <Principal Role="Материалы">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Ткани">
@@ -188,10 +188,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Фурнитура_ВидФурнитуры">
-          <End Role="ВидФурнитуры" Type="Self.ВидФурнитуры" Multiplicity="0..1" />
+          <End Role="ВидыФурнитур" Type="Self.ВидыФурнитур" Multiplicity="0..1" />
           <End Role="Фурнитура" Type="Self.Фурнитура" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ВидФурнитуры">
+            <Principal Role="ВидыФурнитур">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Фурнитура">
@@ -224,11 +224,11 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище ТканиХакасииModelContainer">
-          <EntitySet Name="ВидФурнитуры" EntityType="Self.ВидФурнитуры" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ВидыТканей" EntityType="Self.ВидыТканей" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ВидыФурнитур" EntityType="Self.ВидыФурнитур" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ЕдИзмерения" EntityType="Self.ЕдИзмерения" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Клиенты" EntityType="Self.Клиенты" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Материал" EntityType="Self.Материал" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Материалы" EntityType="Self.Материалы" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Покупка" EntityType="Self.Покупка" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Производители" EntityType="Self.Производители" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ткани" EntityType="Self.Ткани" Schema="dbo" store:Type="Tables" />
@@ -255,7 +255,7 @@
             <End Role="Ткани" EntitySet="Ткани" />
           </AssociationSet>
           <AssociationSet Name="FK_Ткани_Материал" Association="Self.FK_Ткани_Материал">
-            <End Role="Материал" EntitySet="Материал" />
+            <End Role="Материалы" EntitySet="Материалы" />
             <End Role="Ткани" EntitySet="Ткани" />
           </AssociationSet>
           <AssociationSet Name="FK_Ткани_Производители" Association="Self.FK_Ткани_Производители">
@@ -263,7 +263,7 @@
             <End Role="Ткани" EntitySet="Ткани" />
           </AssociationSet>
           <AssociationSet Name="FK_Фурнитура_ВидФурнитуры" Association="Self.FK_Фурнитура_ВидФурнитуры">
-            <End Role="ВидФурнитуры" EntitySet="ВидФурнитуры" />
+            <End Role="ВидыФурнитур" EntitySet="ВидыФурнитур" />
             <End Role="Фурнитура" EntitySet="Фурнитура" />
           </AssociationSet>
           <AssociationSet Name="FK_Фурнитура_ЕдИзмерения" Association="Self.FK_Фурнитура_ЕдИзмерения">
@@ -280,14 +280,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ТканиХакасииModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ВидФурнитуры">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ВидФурнитуры1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Фурнитура" Relationship="Self.FK_Фурнитура_ВидФурнитуры" FromRole="ВидФурнитуры" ToRole="Фурнитура" />
-        </EntityType>
         <EntityType Name="ВидыТканей">
           <Key>
             <PropertyRef Name="ID" />
@@ -296,12 +288,20 @@
           <Property Name="ВидТканей" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Ткани" Relationship="Self.FK_Ткани_ВидыТканей" FromRole="ВидыТканей" ToRole="Ткани" />
         </EntityType>
+        <EntityType Name="ВидыФурнитур">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ВидФурнитуры" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Фурнитура" Relationship="Self.FK_Фурнитура_ВидФурнитуры" FromRole="ВидыФурнитур" ToRole="Фурнитура" />
+        </EntityType>
         <EntityType Name="ЕдИзмерения">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ЕдИзмерения1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ЕдИзм" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Фурнитура" Relationship="Self.FK_Фурнитура_ЕдИзмерения" FromRole="ЕдИзмерения" ToRole="Фурнитура" />
         </EntityType>
         <EntityType Name="Клиенты">
@@ -316,13 +316,13 @@
           <Property Name="Фото" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Покупка" Relationship="Self.FK_Покупка_Клиенты" FromRole="Клиенты" ToRole="Покупка" />
         </EntityType>
-        <EntityType Name="Материал">
+        <EntityType Name="Материалы">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Материал1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Ткани" Relationship="Self.FK_Ткани_Материал" FromRole="Материал" ToRole="Ткани" />
+          <Property Name="Материал" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ткани" Relationship="Self.FK_Ткани_Материал" FromRole="Материалы" ToRole="Ткани" />
         </EntityType>
         <EntityType Name="Покупка">
           <Key>
@@ -366,7 +366,7 @@
           <Property Name="Скидка" Type="Double" />
           <Property Name="Фото" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="ВидыТканей" Relationship="Self.FK_Ткани_ВидыТканей" FromRole="Ткани" ToRole="ВидыТканей" />
-          <NavigationProperty Name="Материал1" Relationship="Self.FK_Ткани_Материал" FromRole="Ткани" ToRole="Материал" />
+          <NavigationProperty Name="Материалы" Relationship="Self.FK_Ткани_Материал" FromRole="Ткани" ToRole="Материалы" />
           <NavigationProperty Name="Покупка" Relationship="Self.FK_Покупка_Ткани" FromRole="Ткани" ToRole="Покупка" />
           <NavigationProperty Name="Производители" Relationship="Self.FK_Ткани_Производители" FromRole="Ткани" ToRole="Производители" />
         </EntityType>
@@ -393,23 +393,11 @@
           <Property Name="Количество" Type="Double" />
           <Property Name="Скидка" Type="Double" />
           <Property Name="Фото" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="ВидФурнитуры1" Relationship="Self.FK_Фурнитура_ВидФурнитуры" FromRole="Фурнитура" ToRole="ВидФурнитуры" />
+          <NavigationProperty Name="ВидыФурнитур" Relationship="Self.FK_Фурнитура_ВидФурнитуры" FromRole="Фурнитура" ToRole="ВидыФурнитур" />
           <NavigationProperty Name="ЕдИзмерения1" Relationship="Self.FK_Фурнитура_ЕдИзмерения" FromRole="Фурнитура" ToRole="ЕдИзмерения" />
           <NavigationProperty Name="Покупка" Relationship="Self.FK_Покупка_Фурнитура" FromRole="Фурнитура" ToRole="Покупка" />
           <NavigationProperty Name="Производители" Relationship="Self.FK_Фурнитура_Производители" FromRole="Фурнитура" ToRole="Производители" />
         </EntityType>
-        <Association Name="FK_Фурнитура_ВидФурнитуры">
-          <End Role="ВидФурнитуры" Type="Self.ВидФурнитуры" Multiplicity="0..1" />
-          <End Role="Фурнитура" Type="Self.Фурнитура" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ВидФурнитуры">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Фурнитура">
-              <PropertyRef Name="ВидФурнитуры" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Ткани_ВидыТканей">
           <End Role="ВидыТканей" Type="Self.ВидыТканей" Multiplicity="0..1" />
           <End Role="Ткани" Type="Self.Ткани" Multiplicity="*" />
@@ -419,6 +407,18 @@
             </Principal>
             <Dependent Role="Ткани">
               <PropertyRef Name="ВидТкани" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Фурнитура_ВидФурнитуры">
+          <End Role="ВидыФурнитур" Type="Self.ВидыФурнитур" Multiplicity="0..1" />
+          <End Role="Фурнитура" Type="Self.Фурнитура" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ВидыФурнитур">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Фурнитура">
+              <PropertyRef Name="ВидФурнитуры" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -447,10 +447,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ткани_Материал">
-          <End Role="Материал" Type="Self.Материал" Multiplicity="0..1" />
+          <End Role="Материалы" Type="Self.Материалы" Multiplicity="0..1" />
           <End Role="Ткани" Type="Self.Ткани" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Материал">
+            <Principal Role="Материалы">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Ткани">
@@ -518,24 +518,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ТканиХакасииEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ВидФурнитуры" EntityType="Self.ВидФурнитуры" />
+        <EntityContainer Name="ТканиХакасииEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ВидыТканей" EntityType="Self.ВидыТканей" />
+          <EntitySet Name="ВидыФурнитур" EntityType="Self.ВидыФурнитур" />
           <EntitySet Name="ЕдИзмерения" EntityType="Self.ЕдИзмерения" />
           <EntitySet Name="Клиенты" EntityType="Self.Клиенты" />
-          <EntitySet Name="Материал" EntityType="Self.Материал" />
+          <EntitySet Name="Материалы" EntityType="Self.Материалы" />
           <EntitySet Name="Покупка" EntityType="Self.Покупка" />
           <EntitySet Name="Производители" EntityType="Self.Производители" />
           <EntitySet Name="Ткани" EntityType="Self.Ткани" />
           <EntitySet Name="Услуги" EntityType="Self.Услуги" />
           <EntitySet Name="Фурнитура" EntityType="Self.Фурнитура" />
-          <AssociationSet Name="FK_Фурнитура_ВидФурнитуры" Association="Self.FK_Фурнитура_ВидФурнитуры">
-            <End Role="ВидФурнитуры" EntitySet="ВидФурнитуры" />
-            <End Role="Фурнитура" EntitySet="Фурнитура" />
-          </AssociationSet>
           <AssociationSet Name="FK_Ткани_ВидыТканей" Association="Self.FK_Ткани_ВидыТканей">
             <End Role="ВидыТканей" EntitySet="ВидыТканей" />
             <End Role="Ткани" EntitySet="Ткани" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Фурнитура_ВидФурнитуры" Association="Self.FK_Фурнитура_ВидФурнитуры">
+            <End Role="ВидыФурнитур" EntitySet="ВидыФурнитур" />
+            <End Role="Фурнитура" EntitySet="Фурнитура" />
           </AssociationSet>
           <AssociationSet Name="FK_Фурнитура_ЕдИзмерения" Association="Self.FK_Фурнитура_ЕдИзмерения">
             <End Role="ЕдИзмерения" EntitySet="ЕдИзмерения" />
@@ -546,7 +546,7 @@
             <End Role="Покупка" EntitySet="Покупка" />
           </AssociationSet>
           <AssociationSet Name="FK_Ткани_Материал" Association="Self.FK_Ткани_Материал">
-            <End Role="Материал" EntitySet="Материал" />
+            <End Role="Материалы" EntitySet="Материалы" />
             <End Role="Ткани" EntitySet="Ткани" />
           </AssociationSet>
           <AssociationSet Name="FK_Покупка_Ткани" Association="Self.FK_Покупка_Ткани">
@@ -575,15 +575,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ТканиХакасииModelContainer" CdmEntityContainer="ТканиХакасииEntities">
-          <EntitySetMapping Name="ВидФурнитуры">
-            <EntityTypeMapping TypeName="ТканиХакасииModel.ВидФурнитуры">
-              <MappingFragment StoreEntitySet="ВидФурнитуры">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ВидФурнитуры1" ColumnName="ВидФурнитуры" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="Хранилище ТканиХакасииModelContainer" CdmEntityContainer="ТканиХакасииEntities1">
           <EntitySetMapping Name="ВидыТканей">
             <EntityTypeMapping TypeName="ТканиХакасииModel.ВидыТканей">
               <MappingFragment StoreEntitySet="ВидыТканей">
@@ -592,11 +584,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ВидыФурнитур">
+            <EntityTypeMapping TypeName="ТканиХакасииModel.ВидыФурнитур">
+              <MappingFragment StoreEntitySet="ВидыФурнитур">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ВидФурнитуры" ColumnName="ВидФурнитуры" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ЕдИзмерения">
             <EntityTypeMapping TypeName="ТканиХакасииModel.ЕдИзмерения">
               <MappingFragment StoreEntitySet="ЕдИзмерения">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ЕдИзмерения1" ColumnName="ЕдИзмерения" />
+                <ScalarProperty Name="ЕдИзм" ColumnName="ЕдИзм" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -612,11 +612,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Материал">
-            <EntityTypeMapping TypeName="ТканиХакасииModel.Материал">
-              <MappingFragment StoreEntitySet="Материал">
+          <EntitySetMapping Name="Материалы">
+            <EntityTypeMapping TypeName="ТканиХакасииModel.Материалы">
+              <MappingFragment StoreEntitySet="Материалы">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Материал1" ColumnName="Материал" />
+                <ScalarProperty Name="Материал" ColumnName="Материал" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -22,9 +22,25 @@ namespace TkaHuXakaccuu
     public partial class MainWindow : Window
     {
         public MainWindow()
-        {
+        { 
             InitializeComponent();
-            MainFrame.Navigate(new MainPage());
+            MainFrame.Navigate(new ClothPage());
+        }
+
+
+        private void BtnFurniture_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnServices_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnCloth_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ClothPage());
         }
     }
 }

@@ -12,18 +12,18 @@ namespace TkaHuXakaccuu
     using System;
     using System.Collections.Generic;
     
-    public partial class ВидФурнитуры
+    public partial class Материалы
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ВидФурнитуры()
+        public Материалы()
         {
-            this.Фурнитура = new HashSet<Фурнитура>();
+            this.Ткани = new HashSet<Ткани>();
         }
     
         public int ID { get; set; }
-        public string ВидФурнитуры1 { get; set; }
+        public string Материал { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Фурнитура> Фурнитура { get; set; }
+        public virtual ICollection<Ткани> Ткани { get; set; }
     }
 }

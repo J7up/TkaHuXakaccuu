@@ -1,0 +1,43 @@
+﻿<Window x:Class="TkaHuXakaccuu.Windows.SaveClothWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TkaHuXakaccuu.Windows"
+        mc:Ignorable="d"
+        Title="SaveClothWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="2">
+            <TextBlock>Наименование</TextBlock>
+            <TextBox Text="{Binding Наименование}"></TextBox>
+            <TextBlock>Вид ткани</TextBlock>
+            <ComboBox x:Name="CmbVidTkani" DisplayMemberPath="ВидТканей" SelectedItem="{Binding ВидыТканей}"></ComboBox>
+            <TextBlock>Материал</TextBlock>
+            <ComboBox x:Name="CmbMaterial" DisplayMemberPath="Материал" SelectedItem="{Binding Материалы}"></ComboBox>
+            <TextBlock>Количество</TextBlock>
+            <TextBox Text="{Binding Количество}"></TextBox>
+            <TextBlock>Длина</TextBlock>
+            <TextBox Text="{Binding ДлинаВРулоне}"></TextBox>
+            <TextBlock>Ширина</TextBlock>
+            <TextBox Text="{Binding Ширина}"></TextBox>
+            <TextBlock>Плотность</TextBlock>
+            <TextBox Text="{Binding Плотность}"></TextBox>
+            <TextBlock>Производитель</TextBlock>
+            <ComboBox x:Name="CmbProiz" DisplayMemberPath="Производитель" SelectedItem="{Binding Производители}"></ComboBox>
+            <TextBlock>Цена</TextBlock>
+            <TextBox Text="{Binding Цена}"></TextBox>
+            <TextBlock>Скидка</TextBlock>
+            <TextBox Text="{Binding Скидка}"></TextBox>
+            <TextBlock>Фото</TextBlock>
+            <Image Source="{Binding PhotoPath}"></Image>
+        </UniformGrid>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="BtnSave" Click="BtnSave_Click">Сохранить</Button>
+            <Button x:Name="BtnAddPhoto" Click="BtnAddPhoto_Click" Width="120">Добавить фото</Button>
+        </StackPanel>
+    </Grid>
+</Window>
