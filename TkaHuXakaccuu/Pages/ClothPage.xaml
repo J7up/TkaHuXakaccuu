@@ -23,24 +23,24 @@
         </StackPanel>
         <DataGrid Grid.Row="1" x:Name="DataGridCloth" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" Margin="0,5,0,5">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Наименование" Binding="{Binding Наименование}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Вид ткани" Binding="{Binding ВидыТканей.ВидТканей}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Материал" Binding="{Binding Материалы.Материал}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Количество" Binding="{Binding Количество}"></DataGridTextColumn>
-                <DataGridTextColumn Header="ДлинаВРулоне" Binding="{Binding ДлинаВРулоне}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Ширина" Binding="{Binding Ширина}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Плотность" Binding="{Binding Плотность}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Производитель" Binding="{Binding Производители.Производитель}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Цена" Binding="{Binding Цена}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Скидка" Binding="{Binding Скидка}"></DataGridTextColumn>
-                <DataGridTemplateColumn Header="Картинка">
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Наименование}" Width="95"></DataGridTextColumn>
+                <DataGridTextColumn Header="Вид ткани" Binding="{Binding ВидыТканей.ВидТканей}" Width="65"></DataGridTextColumn>
+                <DataGridTextColumn Header="Материал" Binding="{Binding Материалы.Материал}" Width="65"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Количество}" Width="75"></DataGridTextColumn>
+                <DataGridTextColumn Header="ДлинаВРулоне" Binding="{Binding ДлинаВРулоне}" Width="90"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ширина" Binding="{Binding Ширина}" Width="55"></DataGridTextColumn>
+                <DataGridTextColumn Header="Плотность" Binding="{Binding Плотность}" Width="68"></DataGridTextColumn>
+                <DataGridTextColumn Header="Производитель" Binding="{Binding Производители.Производитель}" Width="95"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Цена}" Width="40"></DataGridTextColumn>
+                <DataGridTextColumn Header="Скидка" Binding="{Binding Скидка}" Width="50"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Картинка" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding PhotoPath}"></Image>
+                            <Image Source="{Binding Фото}"></Image>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Редактировать">
+                <DataGridTemplateColumn Header="Редактировать" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="BtnEdit" Click="BtnEdit_Click">Изменить</Button>

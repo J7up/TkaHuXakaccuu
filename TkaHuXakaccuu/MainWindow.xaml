@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TkaHuXakaccuu"
         mc:Ignorable="d"
-        Title="Ткани Хакасии" Height="600" Width="1000">
+        Title="Ткани Хакасии" Height="600" Width="1000" Icon="/cut.png" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"></RowDefinition>
@@ -21,7 +21,7 @@
             <Image Source="Resources/scissors.png" HorizontalAlignment="Left"></Image>
             <TextBlock Text="Ткани Хакасии" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
-        <TextBlock Text="Ткани" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"></TextBlock>
+        <TextBlock x:Name="TxtHead" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"></TextBlock>
         <Label Grid.Row ="2" Background="#FF3C83D2" Grid.ColumnSpan="2">© 2022 Магазин "Ткани Хакасии". Все права защищены. Все торговые марки являются собственностью соответствующих владельцев.</Label>
         <Frame Grid.Row="1" Grid.Column="1" x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
         <StackPanel Orientation="Vertical" Grid.Row="1">

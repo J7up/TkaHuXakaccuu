@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TkaHuXakaccuu.Windows"
         mc:Ignorable="d"
-        Title="SaveClothWindow" Height="450" Width="800">
+        Title="SaveClothWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -33,7 +33,7 @@
             <TextBlock>Скидка</TextBlock>
             <TextBox Text="{Binding Скидка}"></TextBox>
             <TextBlock>Фото</TextBlock>
-            <Image Source="{Binding PhotoPath}"></Image>
+            <Image Name="Img" Source="{Binding Фото}"></Image>
         </UniformGrid>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="BtnSave" Click="BtnSave_Click">Сохранить</Button>

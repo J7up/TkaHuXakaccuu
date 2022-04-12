@@ -24,23 +24,30 @@ namespace TkaHuXakaccuu
         public MainWindow()
         { 
             InitializeComponent();
-            MainFrame.Navigate(new ClothPage());
+            MainFrame.Navigate(new AuthPage());
+            BtnCloth.Visibility = Visibility.Collapsed;
+            BtnFurniture.Visibility = Visibility.Collapsed;
+            BtnServices.Visibility = Visibility.Collapsed;
+            TxtHead.Text = "Авторизация";
         }
 
 
-        private void BtnFurniture_Click(object sender, RoutedEventArgs e)
+        public void BtnFurniture_Click(object sender, RoutedEventArgs e)
         {
+            MainFrame.Navigate(new FurniturePage());
+            TxtHead.Text = "Фурнитуры";
 
         }
 
         private void BtnServices_Click(object sender, RoutedEventArgs e)
         {
-
+            TxtHead.Text = "Услуги";
         }
 
         private void BtnCloth_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new ClothPage());
+            TxtHead.Text = "Ткани";
         }
     }
 }
