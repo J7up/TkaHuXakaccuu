@@ -28,6 +28,8 @@ namespace TkaHuXakaccuu
             BtnCloth.Visibility = Visibility.Collapsed;
             BtnFurniture.Visibility = Visibility.Collapsed;
             BtnServices.Visibility = Visibility.Collapsed;
+            BtnClients.Visibility = Visibility.Collapsed;
+            BtnOrder.Visibility = Visibility.Collapsed; 
             TxtHead.Text = "Авторизация";
         }
 
@@ -41,6 +43,7 @@ namespace TkaHuXakaccuu
 
         private void BtnServices_Click(object sender, RoutedEventArgs e)
         {
+            MainFrame.Navigate(new ServicePage());
             TxtHead.Text = "Услуги";
         }
 
@@ -48,6 +51,28 @@ namespace TkaHuXakaccuu
         {
             MainFrame.Navigate(new ClothPage());
             TxtHead.Text = "Ткани";
+        }
+
+        private void BtnClients_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new ClientPage());
+            TxtHead.Text = "Клиенты";
+        }
+
+        private void BtnOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            BtnCloth.Visibility = Visibility.Collapsed;
+            BtnFurniture.Visibility = Visibility.Collapsed;
+            BtnServices.Visibility = Visibility.Collapsed;
+            BtnClients.Visibility = Visibility.Collapsed;
+            BtnOrder.Visibility = Visibility.Collapsed;
+            MainFrame.Navigate(new AuthPage());
+            TxtHead.Text = "Авторизация";
         }
     }
 }

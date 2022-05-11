@@ -17,7 +17,7 @@ namespace TkaHuXakaccuu
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Услуги()
         {
-            this.Покупка = new HashSet<Покупка>();
+            this.ЗаказУслуги = new HashSet<ЗаказУслуги>();
         }
     
         public int ID { get; set; }
@@ -26,6 +26,6 @@ namespace TkaHuXakaccuu
         public Nullable<double> Скидка { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Покупка> Покупка { get; set; }
+        public virtual ICollection<ЗаказУслуги> ЗаказУслуги { get; set; }
     }
 }

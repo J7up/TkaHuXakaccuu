@@ -20,23 +20,44 @@ namespace TkaHuXakaccuu.Pages
     /// </summary>
     public partial class AuthPage : Page
     {
+        ТканиХакасииEntities3 context;
         public AuthPage()
         {
             InitializeComponent();
+            MainWindow main = (MainWindow)Application.Current.MainWindow;
+            main.BtnBack.Visibility = Visibility.Collapsed;
+            context = new ТканиХакасииEntities3();
         }
 
         private void BtnAuth_Click(object sender, RoutedEventArgs e)
         {
             MainWindow main = (MainWindow)Application.Current.MainWindow;
-            if (TxtLogin.Text == "111" && TxtPass.Password =="111")
+            if (context.Клиенты.Any(u=>u.Логин==TxtLogin.Text && u.Пароль==TxtPass.Password))
             {
-                MessageBox.Show("Добро пожаловать!!!"); 
-            main.BtnCloth.Visibility = Visibility.Visible;
-            main.BtnFurniture.Visibility = Visibility.Visible;
-            main.BtnServices.Visibility = Visibility.Visible;
-            main.MainFrame.Navigate(new ClothPage());
-            main.TxtHead.Text = "Ткани";
-            }
+              if (context.Клиенты.Any(u => u.Логин == TxtLogin.Text && u.Пароль == TxtPass.Password && u.ID==1))
+                {
+                    MessageBox.Show("Добро пожаловать!!!");
+                    main.BtnCloth.Visibility = Visibility.Visible;
+                    main.BtnFurniture.Visibility = Visibility.Visible;
+                    main.BtnServices.Visibility = Visibility.Visible;
+                    main.BtnClients.Visibility = Visibility.Visible;
+                    main.BtnOrder.Visibility = Visibility.Visible;
+                    main.CmbAdminUser.SelectedIndex = 0;  
+                    main.TxtHead.Text = "Ткани";
+                    main.MainFrame.Navigate(new ClothPage());
+                }
+                else
+                {
+                    MessageBox.Show("Добро пожаловать!!!");
+                    main.BtnCloth.Visibility = Visibility.Visible;
+                    main.BtnFurniture.Visibility = Visibility.Visible;
+                    main.BtnServices.Visibility = Visibility.Visible;
+                    main.BtnOrder.Visibility = Visibility.Visible;   
+                    main.CmbAdminUser.SelectedIndex = 1;
+                    main.TxtHead.Text = "Ткани";
+                    main.MainFrame.Navigate(new ClothPage());
+                }
+            }  
             else
             {
                 MessageBox.Show("Неверный логин/пароль");
@@ -48,9 +69,54 @@ namespace TkaHuXakaccuu.Pages
             MainWindow main = (MainWindow)Application.Current.MainWindow;
             main.BtnCloth.Visibility = Visibility.Visible;
             main.BtnFurniture.Visibility = Visibility.Visible;
-            main.BtnServices.Visibility = Visibility.Visible;
-            main.MainFrame.Navigate(new ClothPage());
+            main.BtnServices.Visibility = Visibility.Visible;   
+            main.BtnOrder.Visibility = Visibility.Visible;
+            main.CmbAdminUser.SelectedIndex = 1;
             main.TxtHead.Text = "Ткани";
+            main.MainFrame.Navigate(new ClothPage());
         }
-    }
+
+        private void BtnReg_Click(object sender, RoutedEventArgs e)
+        {
+            var newCloth = new Клиенты();
+            context.Клиенты.Add(newCloth);
+            var add = new Windows.SaveClientWindow(context, newCloth);
+            add.ShowDialog();
+        }
+
+        private void ShowHidePass_MouseLeave(object sender, MouseEventArgs e)
+        {
+            HidePassword();
+        }
+
+        private void ShowHidePass_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ShowPassword();
+        }
+
+        private void ShowHidePass_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            HidePassword();
+        }
+        void ShowPassword()
+        {
+            TxtPassword.Visibility = Visibility.Visible;
+            TxtPass.Visibility = Visibility.Hidden;
+            TxtPassword.Text = TxtPass.Password;
+        }
+        void HidePassword()
+        {
+            TxtPassword.Visibility = Visibility.Hidden;
+            TxtPass.Visibility = Visibility.Visible;
+            TxtPass.Focus();
+        }
+
+        private void TxtPass_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (TxtPass.Password.Length > 0)
+                ShowHidePass.Visibility = Visibility.Visible;
+            else
+                ShowHidePass.Visibility = Visibility.Hidden;
+        }
+    } 
 }

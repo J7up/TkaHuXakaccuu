@@ -12,28 +12,20 @@ namespace TkaHuXakaccuu
     using System;
     using System.Collections.Generic;
     
-    public partial class Фурнитура
+    public partial class ЗаказУслуги
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Фурнитура()
+        public ЗаказУслуги()
         {
-            this.ЗаказФурнитуры = new HashSet<ЗаказФурнитуры>();
+            this.Покупка = new HashSet<Покупка>();
         }
     
         public int ID { get; set; }
-        public string Наименование { get; set; }
-        public Nullable<int> ВидФурнитуры { get; set; }
-        public Nullable<int> ЕдИзмерения { get; set; }
-        public Nullable<int> Производитель { get; set; }
-        public Nullable<double> Цена { get; set; }
+        public Nullable<int> IDУслуги { get; set; }
         public Nullable<double> Количество { get; set; }
-        public Nullable<double> Скидка { get; set; }
-        public byte[] Фото { get; set; }
     
-        public virtual ВидыФурнитур ВидыФурнитур { get; set; }
-        public virtual ЕдИзмерения ЕдИзмерения1 { get; set; }
+        public virtual Услуги Услуги { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ЗаказФурнитуры> ЗаказФурнитуры { get; set; }
-        public virtual Производители Производители { get; set; }
+        public virtual ICollection<Покупка> Покупка { get; set; }
     }
 }

@@ -17,19 +17,25 @@ using System.Windows.Shapes;
 namespace TkaHuXakaccuu.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для SaveClothWindow.xaml
+    /// Логика взаимодействия для SaveFurnitureWindow.xaml
     /// </summary>
-    public partial class SaveClothWindow : Window
+    public partial class SaveFurnitureWindow : Window
     {
         ТканиХакасииEntities3 context;
-        public SaveClothWindow(ТканиХакасииEntities3 context1, Ткани cloth)
+        public SaveFurnitureWindow(ТканиХакасииEntities3 context1, Фурнитура fur)
         {
             InitializeComponent();
             this.context = context1;
-            CmbMaterial.ItemsSource = context.Материалы.ToList();
-            CmbVidTkani.ItemsSource = context.ВидыТканей.ToList();
+            CmbVidFurniture.ItemsSource = context.ВидыФурнитур.ToList();
+            CmbIzm.ItemsSource = context.ЕдИзмерения.ToList();
             CmbProiz.ItemsSource = context.Производители.ToList();
-            this.DataContext = cloth;
+            this.DataContext = fur;
+        }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            context.SaveChanges();
+            this.Close();
         }
 
         private void BtnAddPhoto_Click(object sender, RoutedEventArgs e)
@@ -41,17 +47,10 @@ namespace TkaHuXakaccuu.Windows
             {
                 string namefile = openFile.FileName;
                 byte[] image = File.ReadAllBytes(namefile);
-                var cloth = (Ткани)this.DataContext;
-                cloth.Фото = image;
+                var fur = (Фурнитура)this.DataContext;
+                fur.Фото = image;
                 Img.Source = new BitmapImage(new Uri(namefile));
             }
-        }
-
-        private void BtnSave_Click(object sender, RoutedEventArgs e)
-        {
-
-            context.SaveChanges();
-            this.Close();
         }
     }
 }

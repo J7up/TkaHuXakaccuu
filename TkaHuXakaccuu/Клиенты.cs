@@ -24,6 +24,8 @@ namespace TkaHuXakaccuu
         public string Фамилия { get; set; }
         public string Имя { get; set; }
         public string Email { get; set; }
+        public string Логин { get; set; }
+        public string Пароль { get; set; }
         public string Телефон { get; set; }
         public byte[] Фото { get; set; }
     

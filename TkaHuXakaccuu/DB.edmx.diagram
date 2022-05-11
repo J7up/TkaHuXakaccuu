@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e8c0d2bd4f2e422682b1adacd69cea50" Name="Diagram1">
+        <EntityTypeShape EntityType="ТканиХакасииModel.ВидыТканей" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ТканиХакасииModel.ВидыФурнитур" Width="1.5" PointX="3.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ТканиХакасииModel.ЕдИзмерения" Width="1.5" PointX="3.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ТканиХакасииModel.ЗаказТкани" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ТканиХакасииModel.ЗаказУслуги" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ТканиХакасииModel.ЗаказФурнитуры" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ТканиХакасииModel.Клиенты" Width="1.5" PointX="8.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ТканиХакасииModel.Материалы" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ТканиХакасииModel.Покупка" Width="1.5" PointX="10.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ТканиХакасииModel.Производители" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ТканиХакасииModel.Ткани" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ТканиХакасииModel.Услуги" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ТканиХакасииModel.Фурнитура" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="ТканиХакасииModel.FK_Ткани_ВидыТканей" ManuallyRouted="false" />
+        <AssociationConnector Association="ТканиХакасииModel.FK_Фурнитура_ВидФурнитуры" ManuallyRouted="false" />
+        <AssociationConnector Association="ТканиХакасииModel.FK_Фурнитура_ЕдИзмерения" ManuallyRouted="false" />
+        <AssociationConnector Association="ТканиХакасииModel.FK_ЗаказТкани_Ткани" ManuallyRouted="false" />
+        <AssociationConnector Association="ТканиХакасииModel.FK_Покупка_ЗаказТкани" ManuallyRouted="false" />
+        <AssociationConnector Association="ТканиХакасииModel.FK_ЗаказУслуги_Услуги" ManuallyRouted="false" />
+        <AssociationConnector Association="ТканиХакасииModel.FK_Покупка_ЗаказУслуги" ManuallyRouted="false" />
+        <AssociationConnector Association="ТканиХакасииModel.FK_ЗаказФурнитуры_Фурнитура" ManuallyRouted="false" />
+        <AssociationConnector Association="ТканиХакасииModel.FK_Покупка_ЗаказФурнитуры" ManuallyRouted="false" />
+        <AssociationConnector Association="ТканиХакасииModel.FK_Покупка_Клиенты" ManuallyRouted="false" />
+        <AssociationConnector Association="ТканиХакасииModel.FK_Ткани_Материал" ManuallyRouted="false" />
+        <AssociationConnector Association="ТканиХакасииModel.FK_Ткани_Производители" ManuallyRouted="false" />
+        <AssociationConnector Association="ТканиХакасииModel.FK_Фурнитура_Производители" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

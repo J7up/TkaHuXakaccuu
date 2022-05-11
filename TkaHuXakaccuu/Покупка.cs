@@ -19,12 +19,11 @@ namespace TkaHuXakaccuu
         public Nullable<int> Ткань { get; set; }
         public Nullable<int> Услуга { get; set; }
         public Nullable<int> Клиент { get; set; }
-        public Nullable<double> Количество { get; set; }
         public Nullable<System.DateTime> Дата { get; set; }
     
+        public virtual ЗаказТкани ЗаказТкани { get; set; }
+        public virtual ЗаказУслуги ЗаказУслуги { get; set; }
+        public virtual ЗаказФурнитуры ЗаказФурнитуры { get; set; }
         public virtual Клиенты Клиенты { get; set; }
-        public virtual Ткани Ткани { get; set; }
-        public virtual Услуги Услуги { get; set; }
-        public virtual Фурнитура Фурнитура1 { get; set; }
     }
 }

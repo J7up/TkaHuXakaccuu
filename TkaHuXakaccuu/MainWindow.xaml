@@ -21,6 +21,7 @@
             <Image Source="Resources/scissors.png" HorizontalAlignment="Left"></Image>
             <TextBlock Text="Ткани Хакасии" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
+        <Button x:Name="BtnBack" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Visibility="Collapsed" Click="BtnBack_Click">Выход</Button>
         <TextBlock x:Name="TxtHead" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"></TextBlock>
         <Label Grid.Row ="2" Background="#FF3C83D2" Grid.ColumnSpan="2">© 2022 Магазин "Ткани Хакасии". Все права защищены. Все торговые марки являются собственностью соответствующих владельцев.</Label>
         <Frame Grid.Row="1" Grid.Column="1" x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
@@ -28,7 +29,13 @@
             <Button x:Name="BtnCloth" Click="BtnCloth_Click">Ткани</Button>
             <Button x:Name="BtnFurniture" Click="BtnFurniture_Click">Фурнитура</Button>
             <Button x:Name="BtnServices" Click="BtnServices_Click">Услуги</Button>
+            <Button x:Name="BtnClients" Click="BtnClients_Click">Клиенты</Button>
+            <Button x:Name="BtnOrder" Click="BtnOrder_Click" Visibility="Collapsed">Заказы</Button>
+            <ComboBox x:Name="CmbAdminUser" SelectedIndex="2" Visibility="Hidden">
+                <TextBlock/>
+                <TextBlock/>
+                <TextBlock/>
+            </ComboBox>
         </StackPanel>
-        
     </Grid>
 </Window>

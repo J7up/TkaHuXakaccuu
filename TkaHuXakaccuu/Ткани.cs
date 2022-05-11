@@ -17,7 +17,7 @@ namespace TkaHuXakaccuu
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ткани()
         {
-            this.Покупка = new HashSet<Покупка>();
+            this.ЗаказТкани = new HashSet<ЗаказТкани>();
         }
     
         public int ID { get; set; }
@@ -34,9 +34,9 @@ namespace TkaHuXakaccuu
         public byte[] Фото { get; set; }
     
         public virtual ВидыТканей ВидыТканей { get; set; }
-        public virtual Материалы Материалы { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Покупка> Покупка { get; set; }
+        public virtual ICollection<ЗаказТкани> ЗаказТкани { get; set; }
+        public virtual Материалы Материалы { get; set; }
         public virtual Производители Производители { get; set; }
     }
 }

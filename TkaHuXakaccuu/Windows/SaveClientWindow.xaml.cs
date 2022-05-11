@@ -17,19 +17,16 @@ using System.Windows.Shapes;
 namespace TkaHuXakaccuu.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для SaveClothWindow.xaml
+    /// Логика взаимодействия для SaveClientWindow.xaml
     /// </summary>
-    public partial class SaveClothWindow : Window
+    public partial class SaveClientWindow : Window
     {
         ТканиХакасииEntities3 context;
-        public SaveClothWindow(ТканиХакасииEntities3 context1, Ткани cloth)
+        public SaveClientWindow(ТканиХакасииEntities3 context1, Клиенты client)
         {
             InitializeComponent();
             this.context = context1;
-            CmbMaterial.ItemsSource = context.Материалы.ToList();
-            CmbVidTkani.ItemsSource = context.ВидыТканей.ToList();
-            CmbProiz.ItemsSource = context.Производители.ToList();
-            this.DataContext = cloth;
+            this.DataContext = client;
         }
 
         private void BtnAddPhoto_Click(object sender, RoutedEventArgs e)
@@ -41,7 +38,7 @@ namespace TkaHuXakaccuu.Windows
             {
                 string namefile = openFile.FileName;
                 byte[] image = File.ReadAllBytes(namefile);
-                var cloth = (Ткани)this.DataContext;
+                var cloth = (Клиенты)this.DataContext;
                 cloth.Фото = image;
                 Img.Source = new BitmapImage(new Uri(namefile));
             }
@@ -49,7 +46,6 @@ namespace TkaHuXakaccuu.Windows
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-
             context.SaveChanges();
             this.Close();
         }

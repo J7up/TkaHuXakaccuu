@@ -20,11 +20,25 @@ namespace TkaHuXakaccuu.Pages
     /// </summary>
     public partial class ClothPage : Page
     {
-        ТканиХакасииEntities1 context;
+        ТканиХакасииEntities3 context;
         public ClothPage()
         {
             InitializeComponent();
-            context = new ТканиХакасииEntities1();
+            MainWindow main = (MainWindow)Application.Current.MainWindow;
+            if (main.CmbAdminUser.SelectedIndex==0)
+            {
+                BtnAdd.Visibility = Visibility.Visible;
+                BtnDel.Visibility = Visibility.Visible;
+            }
+            if (main.CmbAdminUser.SelectedIndex == 2)
+            {
+                main.BtnBack.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                main.BtnBack.Visibility = Visibility.Visible;
+            }
+            context = new ТканиХакасииEntities3();
             var alltypes = context.Материалы.ToList();
             alltypes.Insert(0, new Материалы
             { 

@@ -14,8 +14,8 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button x:Name="BtnAdd" Width="100" Click="BtnAdd_Click">Добавление</Button>
-            <Button x:Name="BtnDel" Click="BtnDel_Click">Удаление</Button>
+            <Button x:Name="BtnAdd" Width="100" Click="BtnAdd_Click" Visibility="Collapsed">Добавление</Button>
+            <Button x:Name="BtnDel" Click="BtnDel_Click" Visibility="Collapsed">Удаление</Button>
             <Label Height="30" FontSize="16">Поиск:</Label>
             <TextBox x:Name="SearchTB" Height="25" Width="130" VerticalAlignment="Center" TextChanged="SearchTB_TextChanged"></TextBox>
             <Label Height="30" FontSize="16" Margin="5,0,0,0">Фильтрация:</Label>

@@ -13,17 +13,21 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,80,0">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18">Логин</TextBlock>
-                <TextBox x:Name="TxtLogin" Width="150" Margin="21,0,0,0" FontSize="18"></TextBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Width="110">Логин</TextBlock>
+                <TextBox x:Name="TxtLogin" Width="200" Margin="10,0,0,0" FontSize="30"></TextBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18">Пароль</TextBlock>
-                <PasswordBox x:Name="TxtPass" Width="150" Margin="10,0,0,0" FontSize="18"/>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Center">
+                <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Width="110" Margin="30,0,0,0">Пароль</TextBlock>
+                <PasswordBox x:Name="TxtPass" Width="200" Margin="10,0,0,0" FontSize="30" PasswordChanged="TxtPass_PasswordChanged"/>
+                <TextBox x:Name="TxtPassword" Width="200" Margin="-200,0,0,0" Visibility="Collapsed" FontSize="30"/>
+                <Image x:Name="ShowHidePass" Source="/Pages/show-password.png" Height="30" Width="20" Margin="10,0,0,0" MouseLeave="ShowHidePass_MouseLeave" PreviewMouseDown="ShowHidePass_PreviewMouseDown" PreviewMouseUp="ShowHidePass_PreviewMouseUp" Visibility="Hidden"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <Button x:Name="BtnAuth" FontSize="18" Click="BtnAuth_Click">Вход</Button>
-                <Button x:Name="BntGuest" FontSize="18" Click="BntGuest_Click">Гость</Button>
+            
+            <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                <Button x:Name="BtnAuth" FontSize="30" Click="BtnAuth_Click" Height="50">Вход</Button>
+                <Button x:Name="BtnReg" FontSize="30" Click="BtnReg_Click" Width="190" Height="50">Регистрация</Button>
+                <Button x:Name="BntGuest" FontSize="30" Click="BntGuest_Click" Height="50">Гость</Button>
             </StackPanel>
         </StackPanel>
     </Grid>

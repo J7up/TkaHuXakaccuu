@@ -16,12 +16,12 @@ using System.Windows.Shapes;
 namespace TkaHuXakaccuu.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для FurniturePage.xaml
+    /// Логика взаимодействия для ClientPage.xaml
     /// </summary>
-    public partial class FurniturePage : Page
+    public partial class ClientPage : Page
     {
         ТканиХакасииEntities3 context;
-        public FurniturePage()
+        public ClientPage()
         {
             InitializeComponent();
             MainWindow main = (MainWindow)Application.Current.MainWindow;
@@ -39,34 +39,39 @@ namespace TkaHuXakaccuu.Pages
                 main.BtnBack.Visibility = Visibility.Visible;
             }
             context = new ТканиХакасииEntities3();
-            var alltypes = context.ВидыФурнитур.ToList();
-            alltypes.Insert(0, new ВидыФурнитур
-            {
-                ВидФурнитуры = "Все фурнитуры"
-            });
-            FilterCmb.ItemsSource = alltypes;
-            FilterCmb.SelectedIndex = 0;
+            DataGridClients.ItemsSource = context.Клиенты.ToList();
+        }
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Button edit = sender as Button;
+            var edit1 = edit.DataContext as Клиенты;
+            var edit2 = new Windows.SaveClientWindow(context, edit1);
+            edit2.ShowDialog();
             UpdateCloth();
+        }
 
+        private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateCloth();
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            var newFur = new Фурнитура();
-            context.Фурнитура.Add(newFur);
-            var add = new Windows.SaveFurnitureWindow(context, newFur);
+            var newCloth = new Клиенты();
+            context.Клиенты.Add(newCloth);
+            var add = new Windows.SaveClientWindow(context, newCloth);
             add.ShowDialog();
             UpdateCloth();
         }
 
         private void BtnDel_Click(object sender, RoutedEventArgs e)
         {
-            var CurrentFur = DataGridFurniture.SelectedItem as Фурнитура;
+            var CurrentClient = DataGridClients.SelectedItem as Клиенты;
             if (MessageBox.Show($"Вы точно хотите удалить следующий элемент?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    context.Фурнитура.Remove(CurrentFur);
+                    context.Клиенты.Remove(CurrentClient);
                     context.SaveChanges();
                     MessageBox.Show("Данные удалены!");
                     UpdateCloth();
@@ -77,37 +82,13 @@ namespace TkaHuXakaccuu.Pages
                 }
             }
         }
-
-        private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateCloth();
-        }
-
-        private void FilterCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateCloth();
-        }
-
-        private void BtnEdit_Click(object sender, RoutedEventArgs e)
-        {
-            Button edit = sender as Button;
-            var edit1 = edit.DataContext as Фурнитура;
-            var edit2 = new Windows.SaveFurnitureWindow(context, edit1);
-            edit2.ShowDialog();
-            UpdateCloth();
-        }
         private void UpdateCloth()
         {
-            var filter = context.Фурнитура.ToList();
-            if (FilterCmb.SelectedIndex > 0)
+            var filter = context.Клиенты.ToList();
             {
-                filter = filter.Where(p => p.ВидФурнитуры == (FilterCmb.SelectedValue as ВидыФурнитур).ID).ToList();
+                filter = filter.Where(p => p.Фамилия.ToLower().Contains(SearchTB.Text.ToLower())).ToList();
             }
-            if (SearchTB.Text != null)
-            {
-                filter = filter.Where(p => p.Наименование.ToLower().Contains(SearchTB.Text.ToLower())).ToList();
-            }
-            DataGridFurniture.ItemsSource = filter.ToList();
+            DataGridClients.ItemsSource = filter.ToList();
         }
     }
 }
