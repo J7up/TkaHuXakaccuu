@@ -25,10 +25,12 @@ namespace TkaHuXakaccuu.Pages
         {
             InitializeComponent();
             MainWindow main = (MainWindow)Application.Current.MainWindow;
+            DataGridCloth.Columns.Last().Visibility = Visibility.Hidden;
             if (main.CmbAdminUser.SelectedIndex==0)
             {
                 BtnAdd.Visibility = Visibility.Visible;
                 BtnDel.Visibility = Visibility.Visible;
+                DataGridCloth.Columns.Last().Visibility = Visibility.Visible;
             }
             if (main.CmbAdminUser.SelectedIndex == 2)
             {
@@ -82,9 +84,9 @@ namespace TkaHuXakaccuu.Pages
                     MessageBox.Show("Данные удалены!");
                     UpdateCloth();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message.ToString());
+                    throw;
                 }
             } 
         }

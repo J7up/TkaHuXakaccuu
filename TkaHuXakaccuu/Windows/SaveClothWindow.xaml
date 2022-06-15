@@ -20,11 +20,11 @@
             <ComboBox x:Name="CmbMaterial" DisplayMemberPath="Материал" SelectedItem="{Binding Материалы}"></ComboBox>
             <TextBlock>Количество</TextBlock>
             <TextBox Text="{Binding Количество}"></TextBox>
-            <TextBlock>Длина</TextBlock>
+            <TextBlock>Длина, м</TextBlock>
             <TextBox Text="{Binding ДлинаВРулоне}"></TextBox>
-            <TextBlock>Ширина</TextBlock>
+            <TextBlock>Ширина, м</TextBlock>
             <TextBox Text="{Binding Ширина}"></TextBox>
-            <TextBlock>Плотность</TextBlock>
+            <TextBlock>Плотность, гр./м²</TextBlock>
             <TextBox Text="{Binding Плотность}"></TextBox>
             <TextBlock>Производитель</TextBlock>
             <ComboBox x:Name="CmbProiz" DisplayMemberPath="Производитель" SelectedItem="{Binding Производители}"></ComboBox>
